@@ -1,7 +1,12 @@
+"""
+Домашнее задание к лекции 1. «Import. Module. Package»
+
+"""
+
 from datetime import date
 
-import application.salary as s  # Импорт модуля с назначением псевдонима для его имени.
-from application.db.people import get_employees  # Импорт конкретной функции из модуля.
+import application.salary as s
+from application.db.people import get_employees
 
 if __name__ == '__main__':
     print(date.today(), end=' ')

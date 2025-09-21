@@ -1,3 +1,6 @@
-def get_employees() -> None:
+
+def get_employees():
+    """
+    Тестовая функция для проверки работы с импортами, модулями и пакетами.
+    """
     print('Вызвана функция get_employees')
-    return

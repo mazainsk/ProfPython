@@ -1,3 +1,6 @@
+"""
+Морфологический анализ слова на базе библиотеки pymorphy2
+"""
 # pip install pymorphy2
 # pip install num2words
 # Версия Python должна быть не выше 3.10
@@ -19,7 +22,7 @@ for i, word in enumerate(word_ma):
     print(f'{i + 1}: {word.normal_form} - {word.tag.cyr_repr}')
 print()
 if len(word_ma) > 1:
-    while not (n := input('Выберите вариант >> ')).isdecimal() or not (0 < int(n) <= len(word_ma)):
+    while not (n := input('Выберите вариант >> ')).isdecimal() or not 0 < int(n) <= len(word_ma):
         pass
     n = int(n) - 1
 else:
@@ -36,12 +39,12 @@ if word_ma[n].tag.POS == 'NOUN' and not ('Pltm plur' in tag_str or 'Sgtm sing' i
     print('Согласование нормальной формы слова c числительными:')
     for i in numbers:
         num_text = n2w(i)
-        # Если число вещественное (встречается фрагмент "цел"), то нужно изменить падеж слова на родительный.
+        # Если число вещественное (встречается фрагмент "цел"), изменить падеж слова на родительный.
         if 'цел' in num_text:
             word_ma = word_ma.inflect({'gent'})
             print(i, '->', num_text, word_ma.word)
         else:
-        # Если последнее слово "один" или "два", нужно согласовать его род с существительным.
+        # Если последнее слово "один" или "два", - согласовать его род с существительным.
             num_text = num_text.split()
             if (last_num_word := num_text[-1]) in ('один', 'два'):
                 last_num_word_ma = morph.parse(last_num_word)[0]

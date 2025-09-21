@@ -1,3 +1,6 @@
-def calculate_salary() -> None:
+
+def calculate_salary():
+    """
+    Тестовая функция для проверки работы с импортами, модулями и пакетами.
+    """
     print('Вызвана функция calculate_salary')
-    return
