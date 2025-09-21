@@ -1,7 +1,5 @@
 """
-Домашнее задание к лекции 1. «Import. Module. Package»
-
-"""
+Домашнее задание к лекции 1. «Import. Module. Package» """
 
 from datetime import date
 
