@@ -5,29 +5,6 @@ import csv
 import re
 from itertools import groupby
 
-
-def list_union(input_list: list) -> list:
-    """
-    Функция поэлементно сравнивает вложенные списки и формирует один общий список таким образом,
-    что из одинаковых по значению элементов берется первый, а из разных - тот, что длиннее
-    (при одинаковой длине предпочитается элемент первого списка).
-    :param: group - список из двух списков с одинаковым кол-вом элементов:
-    :return: Одноуровневый список из объединенных элементов.
-    """
-    grouped_data = []
-    if len(input_list) == 1:
-        grouped_data.append(input_list[0])
-    else:
-        element_list = []
-        for i in zip(*input_list):
-            if i[0] != i[1]:
-                if len(i[0]) < len(i[1]):
-                    element_list.append(i[1])
-                    continue
-            element_list.append(i[0])
-        grouped_data.append(element_list)
-    return grouped_data
-
 # Загрузка из файла CSV информации о клиентах.
 with open("phonebook_raw.csv", encoding="utf-8") as f:
     rows = csv.reader(f, delimiter=",")
@@ -52,7 +29,15 @@ sorted_contacts = sorted(contacts_list[1:], key=lambda x: x[:3])
 contacts_list[1:] = sorted_contacts
 grouped_contacts = []
 for _, group in groupby(sorted_contacts, key=lambda x: x[:2]):
-    grouped_contacts.append(*list_union(list(group)))
+    group_list = list(group)
+    if len(group_list) > 1:
+        # Если сгруппировано больше, чем 2 контакта, то берутся только первые два.
+        contact = list(map((lambda x, y: x if x == y else (x if len(x) >= len(y) else y)), *group_list[:2]))
+        # print(group_list)  # Результат по "склеенным" контактам.
+    else:
+        # Если в группе лишь один контакт, то его нужно вынуть из вложенного списка.
+        contact = group_list[0]
+    grouped_contacts.append(contact)
 contacts_list[1:] = grouped_contacts
 
 # Запись нового файла в формате CSV
