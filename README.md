@@ -2,10 +2,10 @@
 
 ## Профессиональная работа с Python.
 1. [Import. Module. Package](modules_packages/)
-3. [Iterators. Generators. Yield](iter_gen_yield/)  
+2. [Iterators. Generators. Yield](iter_gen_yield/)  
 
 ## Применение Python на практике.
-2. [Regular expressions](regexp/)  
+3. [Regular expressions](regexp/)  
   
 
 <!--
