@@ -1,12 +1,15 @@
 """
 Домашнее задание к лекции 2.2 «Regular expressions» """
 
+import os
 import csv
 import re
 from itertools import groupby
 
+module_dir = os.path.dirname(os.path.abspath(__file__))
+
 # Загрузка из файла CSV информации о клиентах.
-with open("phonebook_raw.csv", encoding="utf-8") as f:
+with open(os.path.join(module_dir, 'phonebook_raw.csv'), encoding="utf-8") as f:
     rows = csv.reader(f, delimiter=",")
     contacts_list = list(rows)
 
@@ -41,8 +44,8 @@ for _, group in groupby(sorted_contacts, key=lambda x: x[:2]):
 contacts_list[1:] = grouped_contacts
 
 # Запись нового файла в формате CSV
-with open("phonebook.csv", "w", encoding="utf-8") as f:
+with open(os.path.join(module_dir, 'phonebook.csv'), "w", encoding="utf-8") as f:
     datawriter = csv.writer(f, delimiter=',', lineterminator='\n')
     datawriter.writerows(contacts_list)
 
-print('Модифицированная телефонная книга записана в файл "phonebook.csv"')
+print('Модифицированная телефонная книга записана в файл', os.path.join(module_dir, 'phonebook.csv'))
