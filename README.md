@@ -6,7 +6,7 @@
 3. [Decorators](decorators/)  
 
 ## Применение Python на практике.
-3. [Regular expressions](regexp/)  
+4. [Regular expressions](regexp/)  
 
 <!--
 5. [Tests](4.Tests/)
