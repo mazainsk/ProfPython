@@ -3,15 +3,12 @@
 ## Профессиональная работа с Python.
 1. [Import. Module. Package](modules_packages/)
 2. [Iterators. Generators. Yield](iter_gen_yield/)  
+3. [Decorators](decorators/)  
 
 ## Применение Python на практике.
 3. [Regular expressions](regexp/)  
-  
 
 <!--
-  
-3. [Decorators](3.Decorators/)  
-
 5. [Tests](4.Tests/)
 6. [Web-scrapping](6.Web-scrapping/)
 7. [Подготовка к собеседованию](7.Interview/)  
