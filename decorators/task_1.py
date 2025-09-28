@@ -12,7 +12,7 @@ def logger(old_function):
         start_time = datetime.now()
         result = old_function(*args, **kwargs)
         log_file_content = f'{start_time} {old_function.__name__} {args, kwargs} {result}\n'
-        with open('main.log', 'a') as log_file:
+        with open('main.log', 'a', encoding='utf-8') as log_file:
             log_file.write(log_file_content)
         return result
     return new_function

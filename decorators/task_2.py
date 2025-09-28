@@ -1,23 +1,24 @@
 """
 Домашнее задание к лекции 3. «Decorators»
-Задача 1
+Задача 2
 """
 
 import os
 from datetime import datetime
+from functools import wraps
 
 
 def logger(path):
     def __logger(old_function):
+        @wraps(old_function)
         def new_function(*args, **kwargs):
             start_time = datetime.now()
             result = old_function(*args, **kwargs)
             log_file_content = f'{start_time} {old_function.__name__} {args, kwargs} {result}\n'
-            with open(path, 'a') as log_file:
+            with open(path, 'a', encoding='utf-8') as log_file:
                 log_file.write(log_file_content)
             return result
         return new_function
-
     return __logger
 
 
