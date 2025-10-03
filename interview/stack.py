@@ -2,6 +2,7 @@
 class Stack:
     """
     Класс для работы с объектами в виде стека из списка (очередь LIFO).
+    Внимание: именованные аргументы записываются в стек как кортежи вида (key: value).
 
     """
     def __init__(self, except_errors=True, max_size=None):
@@ -14,7 +15,7 @@ class Stack:
                 f'элементов: {self.size()}\nсодержимое: {str(self._data)}')
 
     def __len__(self):
-        return self.size()
+        return len(self._data)
 
     def is_empty(self):
         return not bool(self._data)
@@ -39,10 +40,11 @@ class Stack:
         if not self._element_is_present():
             return None
         if count is None:
-            result_data = self._data
+            result_data = self._data.copy()
             self._data = []
         else:
-            result_data = self._data[-count:]
+            count = min(count, len(self._data))
+            result_data = self._data[-count:].copy()
             self._data[-count:] = []
         return result_data
 
